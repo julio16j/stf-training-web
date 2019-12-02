@@ -2,5 +2,8 @@
   <mat-toolbar-row>
     <span>{{appTitle}}</span>
   </mat-toolbar-row>
-
+  
 </mat-toolbar>
+
+<input type="text" id = 'title' #title (change) = clickMe(title)>
+<button (click) = clickMe(title) >Clica aqui</button> 

@@ -5,6 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
+
 export class AppComponent {
-  appTitle = 'Money App';
+  appTitle:String = 'Money App';
+  
+
+  clickMe(e){
+    this.appTitle = e.value;
+  }
 }
