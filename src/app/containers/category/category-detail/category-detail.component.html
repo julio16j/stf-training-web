@@ -1,0 +1,17 @@
+<article>
+    <form [formGroup]="categoryForm">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Nome da Categoria" formControlName="nomeControl">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Codigo da Categoria" formControlName="Control">
+        </mat-form-field>
+
+        <div>
+            <p>{{categoryForm.get("nomeControl").value}}</p>
+        </div>
+
+        <button mat-button color = "primaray" (click)="onSubmit()" >Salvar</button>
+    </form>
+</article>

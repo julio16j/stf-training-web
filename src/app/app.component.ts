@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Category } from './core/entity/Category';
 
 @Component({
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 
   appTitle:String = 'Money App';
   
+  @Output('categoryList')
   categoryList: Array<Category> = new Array();
 
   private getCategoryList(){
