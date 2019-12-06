@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CategoryModule } from './containers/category/category.module';
 import { basematerialModule } from './core/config/base-material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { basematerialModule } from './core/config/base-material.module';
     FormsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    HttpClientModule,
 
     CategoryModule,
     basematerialModule

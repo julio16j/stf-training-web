@@ -1,5 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, OnChanges } from '@angular/core';
 import { Category } from './core/entity/Category';
+import { CategoryService } from './containers/category/category.service';
 
 @Component({
   selector: 'stf-root',
@@ -7,12 +8,16 @@ import { Category } from './core/entity/Category';
   styleUrls: ['./app.component.sass']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    throw new Error("Method not implemented.");
+  }
   ngOnInit(): void {
-    setTimeout(()=>{
-      this.getCategoryList();
-    }, 2000)
-    console.log('APPCOMPONENT: executando onInit')
+    this.getCategoryList();
+  }
+
+  constructor( private categoryService:CategoryService){
+
   }
 
   appTitle:String = 'Money App';
@@ -21,26 +26,12 @@ export class AppComponent implements OnInit {
   categoryList: Array<Category> = new Array();
 
   private getCategoryList(){
-    this.categoryList = new Array(
-      { 'id': 1, 
-        'nome': 'Lazer'
-       },
-      { 'id': 2, 
-        'nome': 'Alimentacão'
-       },
-      { 'id': 3, 
-        'nome': 'Supermercado'
-       },
-      { 'id': 4, 
-        'nome': 'Farmácia'
-       },
-      { 'id': 5, 
-        'nome': 'Estudo'
-       },
-      { 'id': 6, 
-        'nome': 'Outros'
-       }
-    )
+    this.categoryService.getCategoryList().subscribe(
+      result => {
+        console.log(result);
+        this.categoryList = result;
+      }
+    );
   }
 
   clickMe(e){

@@ -4,6 +4,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { basematerialModule } from 'src/app/core/config/base-material.module';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     basematerialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports:[
     CategoryListComponent,
