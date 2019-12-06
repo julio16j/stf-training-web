@@ -15,13 +15,13 @@
     <ng-template #categoryListComponent>
       <!-- lista de categorias -->
       <div>
-        <stf-category-list [categoryList]="categoryList"></stf-category-list>
+        <stf-category-list  [categoryList]="categoryList"></stf-category-list>
       </div>
     </ng-template>
   </div>
 
   <!-- formulário de categorias -->
   <div class="article-area" fxFlex>
-    <stf-category-detail></stf-category-detail>
+    <stf-category-detail (categorySave)="getCategoryList()"></stf-category-detail>
   </div>
 </section>

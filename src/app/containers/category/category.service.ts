@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Category } from 'src/app/core/entity/Category';
 
 @Injectable({
@@ -13,5 +13,8 @@ export class CategoryService {
 
   getCategoryList(): Observable<Array<Category>> {
     return this.http.get<Array<Category>>(this.serverHost);
+  }
+  postCategory(categoria:Category):Observable<Category>{
+    return this.http.post<Category>(this.serverHost, categoria);
   }
 }

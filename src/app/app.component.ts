@@ -8,10 +8,7 @@ import { CategoryService } from './containers/category/category.service';
   styleUrls: ['./app.component.sass']
 })
 
-export class AppComponent implements OnInit, OnChanges {
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-    throw new Error("Method not implemented.");
-  }
+export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.getCategoryList();
   }

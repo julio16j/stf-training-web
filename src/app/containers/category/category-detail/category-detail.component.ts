@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { CategoryService } from '../category.service';
+import { Category } from 'src/app/core/entity/Category';
 
 
 @Component({
@@ -10,22 +12,35 @@ import { FormControl, FormGroup, FormBuilder, Validators, NgForm } from '@angula
 export class CategoryDetailComponent implements OnInit {
   public categoryForm: FormGroup;
 
+  @Output()
+  public categorySave:EventEmitter<boolean>;
+
   @ViewChild('categoryFormModel', {static:false})
   public categoryFormModel: NgForm;
 
-  constructor(public formsBuilder: FormBuilder) { }
+  constructor(public formsBuilder: FormBuilder, private categoryService: CategoryService) {
+    this.categorySave = new EventEmitter();
+   }
 
   ngOnInit() {
     
     this.categoryForm = this.formsBuilder.group({
-      nomeControl: ['', [Validators.minLength(3) , Validators.required ]]
+      nome: ['', [Validators.minLength(3) , Validators.required ]]
     })
   }
 
   onSubmit(){
     if (!this.categoryForm.valid)
       return;
-    console.log(this.categoryForm.value)
+    this.categoryService.postCategory(this.categoryForm.value).subscribe(
+      result => {
+        this.categorySave.emit(true);
+      },
+      error =>{
+        console.log(error);
+
+      }
+    );
     this.categoryForm.reset();
     this.categoryFormModel.resetForm();
   }
